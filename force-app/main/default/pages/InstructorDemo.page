@@ -1,0 +1,6 @@
+<apex:page showHeader="true" lightningStylesheets="true" standardController="Account">
+    <h1>Hello World!</h1>
+    This is our new Page
+
+    {!Account.Name}
+</apex:page>

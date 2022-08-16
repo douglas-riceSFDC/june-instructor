@@ -1,0 +1,41 @@
+<template>
+    <c-modal label="Approve or Reject Timecards" modal-shown-override={modalShown}>
+        <c-approve-or-reject-timecards-table timecards={timecards}
+                                             onrejecttimecards={handleRejectTimecards}
+                                             onapprovetimecards={handleApproveTimecards}
+        ></c-approve-or-reject-timecards-table>
+    </c-modal>
+
+
+    <lightning-button label="Create new timecard" onclick={toggleModal}></lightning-button>
+    <template if:true={modalShown}>
+        <section class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <div class="slds-modal__close" style="cursor: pointer">
+                    <lightning-icon icon-name="utility:close" 
+                                    alternative-text="Close" 
+                                    variant="inverse"
+                                    onclick={toggleModal}></lightning-icon>
+                </div>
+                <div class="slds-modal__header"></div>
+                <div class="slds-modal__content">
+                    <lightning-record-edit-form object-api-name="Timecard__c"
+                    onsuccess={handleSuccess}>
+                        <lightning-input-field field-name="Status__c"></lightning-input-field>
+                        <lightning-input-field field-name="Project__c"></lightning-input-field>
+                        <lightning-button label="Save" type="submit" variant="brand"></lightning-button>
+                    </lightning-record-edit-form>
+                </div>
+                <div class="slds-modal__footer">
+                    <slot name="footer"></slot>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+
+
+    <!-- <c-modal label="Create new timecard" modal-shown-override={modalShown}>
+    </c-modal> -->
+</template>

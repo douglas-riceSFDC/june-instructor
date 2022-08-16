@@ -1,0 +1,7 @@
+<apex:page showHeader="true" lightningStylesheets="true" standardController="Timecard__c" extensions="HelloWorldController">
+    {!Welcome}
+
+    <apex:repeat value="{!Strings}" var="singleString">
+        {!singleString} <p />
+    </apex:repeat>
+</apex:page>
